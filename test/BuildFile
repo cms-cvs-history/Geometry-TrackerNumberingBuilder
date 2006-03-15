@@ -1,0 +1,5 @@
+<use name=Geometry/TrackerNumberingBuilder>
+<use name=FWCore/Framework>                                                                                                                                                                                    
+<flags SEAL_PLUGIN_NAME="testGeometryTrackerNumberingBuilder">
+<library file=GeometricDetAnalyzer.cc name=testGeometryTrackerNumberingBuilder>
+</library>
