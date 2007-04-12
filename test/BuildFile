@@ -3,10 +3,10 @@
 <use name=FWCore/Framework>
 
 <library file=ModuleNumbering.cc name=ModuleNumbering>
-<flags SEAL_PLUGIN_NAME="ModuleNumbering">
+<flags EDM_PLUGIN=1>
 </library>
 
 <library file=GeometricDetAnalyzer.cc name=testGeometryTrackerNumberingBuilder>
-<flags SEAL_PLUGIN_NAME="testGeometryTrackerNumberingBuilder">
+<flags EDM_PLUGIN=1>
 </library>
 
