@@ -112,6 +112,7 @@ void CmsTrackerDetIdBuilder::iterate(GeometricDet const * in, int level, unsigne
       case 1:
 	{
 	  temp |= (((in)->components())[i]->geographicalID().rawId()<<16); // Layer Number start bit is 16 [5 unused]
+////	  temp |= (((in)->components())[i]->geographicalID().rawId()<<18); // Layer Number start bit is 16 [5 unused]
 	  break;
 	}
 	
@@ -125,7 +126,8 @@ void CmsTrackerDetIdBuilder::iterate(GeometricDet const * in, int level, unsigne
 	// TIB
       case 3:
 	{
-	  temp |= (((in)->components())[i]->geographicalID().rawId()<<14); // Layer Number start bit is 14 [8 unused]
+//	  temp |= (((in)->components())[i]->geographicalID().rawId()<<14); // Layer Number start bit is 14 [8 unused]
+	  temp |= (((in)->components())[i]->geographicalID().rawId()<<18); // Layer Number start bit is 18 [4 unused]
 	  break;
 	}
 	
@@ -139,7 +141,8 @@ void CmsTrackerDetIdBuilder::iterate(GeometricDet const * in, int level, unsigne
 	// TOB
       case 5:
 	{
-	  temp |= (((in)->components())[i]->geographicalID().rawId()<<14); // Layer Number start bit is 14 [8 unused]
+//	  temp |= (((in)->components())[i]->geographicalID().rawId()<<14); // Layer Number start bit is 14 [8 unused]
+	  temp |= (((in)->components())[i]->geographicalID().rawId()<<17); // Layer Number start bit is 17 [5 unused]
 	  break;
 	}
 	
@@ -200,7 +203,9 @@ void CmsTrackerDetIdBuilder::iterate(GeometricDet const * in, int level, unsigne
 	{
 	  uint32_t temp = ID;
 	  // Side+Part+String Starting bit = 2 (Module Type) + 2 (Module Number) = 4
-	  temp |= (((in)->components())[i]->geographicalID().rawId()<<4);
+//	  temp |= (((in)->components())[i]->geographicalID().rawId()<<4);
+	  // Side+Part+String Starting bit = 2 (Module Type) + 6 (Module Number) = 8
+	  temp |= (((in)->components())[i]->geographicalID().rawId()<<8);
 	  ((in)->components())[i]->setGeographicalID(temp);
 	  break;
 	}
@@ -220,7 +225,9 @@ void CmsTrackerDetIdBuilder::iterate(GeometricDet const * in, int level, unsigne
 	{
 	  uint32_t temp = ID;
 	  // Side+Rod Starting bit = 2 (Module Type) + 3 (Module Number) = 5
-	  temp |= (((in)->components())[i]->geographicalID().rawId()<<5);
+//	  temp |= (((in)->components())[i]->geographicalID().rawId()<<5);
+	  // Side+Rod Starting bit = 2 (Module Type) + 6 (Module Number) = 8
+	  temp |= (((in)->components())[i]->geographicalID().rawId()<<8);
 	  ((in)->components())[i]->setGeographicalID(temp);
 	  break;
 	}
