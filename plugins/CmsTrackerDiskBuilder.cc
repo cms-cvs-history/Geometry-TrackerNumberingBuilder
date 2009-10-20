@@ -39,15 +39,14 @@ void CmsTrackerDiskBuilder::sortNS(DDFilteredView& fv, GeometricDet* det){
   GeometricDet::GeometricDetContainer zminpanels;  // Here z refers abs(z);
   GeometricDet::GeometricDetContainer zmaxpanels;   // So, zmin panel is always closer to ip.
 
-  uint32_t  totalblade = comp.size();
-  if ( totalblade != 24 ){
-	  if( totalblade != 36){
-		  edm::LogError("CmsTrackerDiskBuilder")<<"ERROR, The Total Number of Blade in one disk is "<<totalblade;}}
+  uint32_t  totalblade = comp.size()/2;
+  if ( totalblade != 60 ){
+		  edm::LogError("CmsTrackerDiskBuilder")<<"ERROR, The Total Number of Blade in one disk is "<<totalblade;}
 /*
 
 ### Modified for Pix Fwd Phase I geometry
 ## Pratima Jindal, July 2009
-
+*/
   zminpanels.reserve(totalblade);
   zmaxpanels.reserve(totalblade);
   for( uint32_t  j=0; j<totalblade ;j++)
@@ -79,7 +78,7 @@ void CmsTrackerDiskBuilder::sortNS(DDFilteredView& fv, GeometricDet* det){
     uint32_t temp = (blade<<2) | panel;
     zmaxpanels[bn]->setGeographicalID(temp);
   }
-*/  
+/*  
   zminpanels.reserve(totalblade);
   for( uint32_t  j=0; j<totalblade ;j++)
   {
@@ -94,8 +93,10 @@ void CmsTrackerDiskBuilder::sortNS(DDFilteredView& fv, GeometricDet* det){
     zminpanels[fn]->setGeographicalID(temp);
   }
 
+
+*/
   det->clearComponents();
   
   det->addComponents(zminpanels);
-//  det->addComponents(zmaxpanels);
+  det->addComponents(zmaxpanels);
 }
