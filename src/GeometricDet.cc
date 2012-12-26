@@ -333,10 +333,12 @@ GeometricDet::Rotation GeometricDet::rotationBounds() const{
   return _rotation;
 }
 
-Bounds * GeometricDet::bounds() const{
+const Bounds * GeometricDet::bounds() const{
   //std::cout << "bounds" << std::endl;
   const std::vector<double>& par = _params;
+  Bounds * bounds = 0;
   TrackerShapeToBounds shapeToBounds;
-  return shapeToBounds.buildBounds(_shape,par);
+  bounds = shapeToBounds.buildBounds(_shape,par);
+  return bounds;
 }
 
