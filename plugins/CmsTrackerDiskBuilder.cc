@@ -25,6 +25,11 @@ void
 CmsTrackerDiskBuilder::PhiPosNegSplit_innerOuter( std::vector< GeometricDet const *>::iterator begin,
 						  std::vector< GeometricDet const *>::iterator end )
 {
+  // Introduce a shift in Phi = M_PI / 22
+  // to make sure that the outer blade pannels 1 and 2
+  // are numbered together.
+  const double phiMin = 0.1428;
+  
   // first sort in phi, lowest first (-pi to +pi)
   std::sort( begin, end, PhiSort );
 
@@ -37,13 +42,13 @@ CmsTrackerDiskBuilder::PhiPosNegSplit_innerOuter( std::vector< GeometricDet cons
   double theRmax = theRmin;
   for(vector<const GeometricDet*>::const_iterator it=begin;
       it!=end;it++){
-    if((**it).phi() >= 0) theCompsPosNeg.push_back(*it);
+    if((**it).phi() >= phiMin) theCompsPosNeg.push_back(*it);
     theRmin = std::min( theRmin, (**it).rho());
     theRmax = std::max( theRmax, (**it).rho());
   }
   for(vector<const GeometricDet*>::const_iterator it=begin;
       it!=end;it++){
-    if((**it).phi() < 0) theCompsPosNeg.push_back(*it);
+    if((**it).phi() < phiMin) theCompsPosNeg.push_back(*it);
   }
 
   // now put inner disk panels first
