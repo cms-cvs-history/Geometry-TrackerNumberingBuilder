@@ -102,11 +102,11 @@ void
 TrackerTopologyEP::fillDescriptions( edm::ConfigurationDescriptions & descriptions ) 
 {
   edm::ParameterSetDescription ttc;
-  ttc.add<unsigned int>("pxb_layerStartBit",16);
+  ttc.add<unsigned int>("pxb_layerStartBit",18);
   ttc.add<unsigned int>("pxb_ladderStartBit",8);
   ttc.add<unsigned int>("pxb_moduleStartBit",2);
   ttc.add<unsigned int>("pxb_layerMask",0xF);
-  ttc.add<unsigned int>("pxb_ladderMask",0xFF);
+  ttc.add<unsigned int>("pxb_ladderMask",0x3FF);
   ttc.add<unsigned int>("pxb_moduleMask",0x3F);
   
   ttc.add<unsigned int>("pxf_sideStartBit",23);
