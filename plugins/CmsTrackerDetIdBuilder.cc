@@ -145,8 +145,7 @@ CmsTrackerDetIdBuilder::iterate( GeometricDet const *in, int level, unsigned int
 	// TOB
 	case 5:
 	  {
-	//    temp |= (((in)->components())[i]->geographicalID().rawId() << 14); // Layer Number start bit is 14 [8 unused]
-	    temp |= (((in)->components())[i]->geographicalID().rawId() << 17); // Layer Number start bit is 17 [5 unused]
+	    temp |= (((in)->components())[i]->geographicalID().rawId() << 14); // Layer Number start bit is 14 [8 unused]
 	    break;
 	  }
 	
@@ -207,9 +206,7 @@ CmsTrackerDetIdBuilder::iterate( GeometricDet const *in, int level, unsigned int
 	{
 	  uint32_t temp = ID;
 	  // Side+Part+String Starting bit = 2 (Module Type) + 2 (Module Number) = 4
-//	  temp |= (((in)->components())[i]->geographicalID().rawId()<<4);
-	  // Side+Part+String Starting bit = 2 (Module Type) + 6 (Module Number) = 8
-	  temp |= (((in)->components())[i]->geographicalID().rawId()<<8);
+	  temp |= (((in)->components())[i]->geographicalID().rawId()<<4);
 	  ((in)->components())[i]->setGeographicalID(temp);
 	  break;
 	}
@@ -229,9 +226,7 @@ CmsTrackerDetIdBuilder::iterate( GeometricDet const *in, int level, unsigned int
 	{
 	  uint32_t temp = ID;
 	  // Side+Rod Starting bit = 2 (Module Type) + 3 (Module Number) = 5
-//	  temp |= (((in)->components())[i]->geographicalID().rawId()<<5);
-	  // Side+Rod Starting bit = 2 (Module Type) + 6 (Module Number) = 8
-	  temp |= (((in)->components())[i]->geographicalID().rawId()<<8);
+	  temp |= (((in)->components())[i]->geographicalID().rawId()<<5);
 	  ((in)->components())[i]->setGeographicalID(temp);
 	  break;
 	}
